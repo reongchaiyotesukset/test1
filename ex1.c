@@ -1,15 +1,34 @@
 #include <gtk/gtk.h>
+
 #include "ex1.h"
 
 
-struct _ExampleApp
+
+struct _ExampleAppWindow
 {
-  GtkApplication parent;
+  GtkApplicationWindow parent;
 };
 
+G_DEFINE_TYPE(ExampleAppWindow, example_app_window, GTK_TYPE_APPLICATION_WINDOW);
 
-ExampleApp *
-example_app_new (void)
+static void
+example_app_window_init (ExampleAppWindow *app)
 {
-   return 0;
+}
+
+static void
+example_app_window_class_init (ExampleAppWindowClass *class)
+{
+}
+
+ExampleAppWindow *
+example_app_window_new (ExampleApp *app)
+{
+  return g_object_new (EXAMPLE_APP_WINDOW_TYPE, "application", app, NULL);
+}
+
+void
+example_app_window_open (ExampleAppWindow *win,
+                         GFile            *file)
+{
 }
